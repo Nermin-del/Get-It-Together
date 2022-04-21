@@ -1,6 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-export const DeleteClub = () => {
+export function DeleteClub() {
+    // const [clubName, setClubName] = useState('');
+    // const [clubDescription, setClubDescription] = useState('');
+    // const [clubLocation, setClubLocation] = useState('');
+    // const [clubPhone, setClubPhone] = useState('');
+    // const [clubEmail, setClubEmail] = useState('');
+    // const [clubWebsite, setClubWebsite] = useState('');
+    // const [clubImage, setClubImage] = useState('');
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     console.log(clubName, clubDescription, clubLocation, clubPhone, clubEmail, clubWebsite, clubImage);
+    // }
+
     return (
         <div>
         <h1>Delete Club</h1>
