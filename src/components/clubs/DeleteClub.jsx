@@ -14,6 +14,8 @@ export function DeleteClub() {
     //     console.log(clubName, clubDescription, clubLocation, clubPhone, clubEmail, clubWebsite, clubImage);
     // }
 
+    // localStorage.removeItem(clubName.id);
+
     return (
         <div>
         <h1>Delete Club</h1>

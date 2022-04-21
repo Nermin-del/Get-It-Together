@@ -14,9 +14,9 @@ export const AddClub = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = {
-            name : clubName,
-            description : clubDescription,
-            phone : clubPhone,
+            name: clubName,
+            description: clubDescription,
+            phone: clubPhone,
         }
         console.log(data);
     }
@@ -31,6 +31,22 @@ export const AddClub = () => {
 
     const onHandleClubDescription = (e) => {
         setClubDescription(e.target.value);
+    }
+
+    const storeClubInLocalStorage = (e) => {
+        e.preventDefault();
+        const data = {
+            name: clubName,
+            description: clubDescription,
+            phone: clubPhone,
+        }
+        localStorage.setItem(clubName, JSON.stringify(data));
+    }
+
+    const getClubFromLocalStorage = (e) => {
+        e.preventDefault();
+        const data = localStorage.getItem(clubName);
+        console.log(data);
     }
 
 
@@ -55,4 +71,5 @@ export const AddClub = () => {
         </div>
     );
 }
+
 
