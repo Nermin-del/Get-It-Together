@@ -10,7 +10,6 @@ export const App = () => {
             <BrowserRouter>
                 <MainPage />
             </BrowserRouter>
-            <AddClub />
        </>
     );
 }

@@ -5,11 +5,12 @@ export const AddClub = () => {
 
     const [clubName, setClubName] = useState('');
     const [clubDescription, setClubDescription] = useState('');
-    const [clubLocation, setClubLocation] = useState('');
+    // const [clubLocation, setClubLocation] = useState('');
     const [clubPhone, setClubPhone] = useState('');
-    const [clubEmail, setClubEmail] = useState('');
-    const [clubWebsite, setClubWebsite] = useState('');
-    const [clubImage, setClubImage] = useState('');
+    const [newClub, setNewClub] = useState([])
+    // const [clubEmail, setClubEmail] = useState('');
+    // const [clubWebsite, setClubWebsite] = useState('');
+    // const [clubImage, setClubImage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,26 +34,32 @@ export const AddClub = () => {
         setClubDescription(e.target.value);
     }
 
-    const storeClubInLocalStorage = (e) => {
+    const addNewClub = (e) => {
         e.preventDefault();
-        const data = {
+       const data = {
             name: clubName,
             description: clubDescription,
             phone: clubPhone,
+            index: newClub.length
         }
-        localStorage.setItem(clubName, JSON.stringify(data));
+        localStorage.setItem(clubName + data.index, JSON.stringify(data));
+        setNewClub([...newClub, data])
     }
 
     const getClubFromLocalStorage = (e) => {
-        e.preventDefault();
         const data = localStorage.getItem(clubName);
         console.log(data);
     }
 
+    const deleteNewClub = (e) => {
+        e.preventDefault();
+        const oneGoneArray = newClub.slice(0, length -1);
+        setNewClub(oneGoneArray)
+    }
 
     return (
         <div>
-            <h1>Add Club</h1>
+            <h1>Lägg till klubb</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label> Klubbnamn </label>
@@ -66,8 +73,24 @@ export const AddClub = () => {
                     <label> Beskrivning </label>
                     <input onChange={onHandleClubDescription} value={clubDescription} />
                 </div>
-                <button type='submit'>Lägg till klubb</button>
+                <button onClick={addNewClub} type='submit'>Lägg till klubb</button>
+                
+                <button onClick={deleteNewClub} type='submit'>Tabort senaste klubben</button>
             </form>
+
+            <table>
+                <tbody>
+                {newClub.map((club) => {
+                    return (
+                        <tr key={club.index}>
+                            <th>{club.name}</th>
+                            <th>{club.description}</th>
+                            <th>{club.phone}</th>
+                        </tr>
+                    )
+                })}
+                </tbody>
+            </table>
         </div>
     );
 }
