@@ -1,9 +1,11 @@
 import React from 'react';
-import { Nav } from './Nav';
+import { Nav } from './components/Nav';
 import { AddClub } from '../clubs/AddClub';
-import { DeleteClub } from '../clubs/DeleteClub';
-import { Footer } from './Footer';
+import { AddUser } from '../users/AddUser';
+import { Footer } from './components/Footer';
+import { HomePage } from './HomePage';
 import { Route, Switch } from 'react-router-dom';
+import './styles/mains.css'
 
 
 
@@ -14,8 +16,8 @@ export const MainPage = () => {
             <Nav />
             <Switch>
                 <Route path="/addclub" component={AddClub} />
-                <Route path="/deleteclub"> DeleteClub</Route>
-                <Route exact path="/"> App </Route>
+                <Route path="/adduser" component={AddUser} />
+                <Route exact path="/" component={HomePage} />
             </Switch>
             <Footer />
 
