@@ -4,18 +4,21 @@ import './maincomponents.css';
 
 export const Nav = () => {
     return (
-        <nav className='Nav'>
-            <ul>
-                <li>
-                    <NavLink to='/'>Start</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/addclub'>Lägg till klubb</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/adduser'>Lägg till användare</NavLink>
-                </li>
-            </ul>
-        </nav>
+        <>
+            <h1>Get It together</h1>
+            <nav className='Nav'>
+                <ul>
+                    <li>
+                        <NavLink to='/'>Start</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/addclub'>Lägg till klubb</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/adduser'>Lägg till användare</NavLink>
+                    </li>
+                </ul>
+            </nav>
+        </>
     )
 }
