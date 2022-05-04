@@ -17,6 +17,9 @@ export const Nav = () => {
                     <li>
                         <NavLink to='/adduser'>Lägg till användare</NavLink>
                     </li>
+                    <li>
+                        <NavLink to='/clubs'>Klubbar</NavLink>
+                    </li>
                 </ul>
             </nav>
         </>

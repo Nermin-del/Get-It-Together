@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { HomePage } from './HomePage';
 import { Route, Switch } from 'react-router-dom';
 import './styles/mains.css'
+import { Clubs } from '../clubs/Clubs';
 
 
 
@@ -17,6 +18,7 @@ export const MainPage = () => {
             <Switch>
                 <Route path="/addclub" component={AddClub} />
                 <Route path="/adduser" component={AddUser} />
+                <Route path="/clubs" component={Clubs} />
                 <Route exact path="/" component={HomePage} />
             </Switch>
             <Footer />
