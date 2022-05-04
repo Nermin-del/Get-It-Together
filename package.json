@@ -20,9 +20,14 @@
   "homepage": "https://github.com/Nermin-del/Get-It-Together#readme",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
+    "axios": "^0.27.2",
     "parcel": "^2.4.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.2.1"
+  },
+  "devDependencies": {
+    "buffer": "^6.0.3",
+    "process": "^0.11.10"
   }
 }

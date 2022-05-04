@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { get } from '../server/get';
+import { post } from '../server/post';
 import './style/clubs.css';
 
 
@@ -7,14 +9,19 @@ export const AddClub = () => {
     const [clubName, setClubName] = useState('');
     const [clubDescription, setClubDescription] = useState('');
     // const [clubLocation, setClubLocation] = useState('');
+    const [clubs, setClubs] = useState([]);
     const [clubPhone, setClubPhone] = useState('');
     const [newClub, setNewClub] = useState([])
     // const [clubEmail, setClubEmail] = useState('');
     // const [clubWebsite, setClubWebsite] = useState('');
     // const [clubImage, setClubImage] = useState('');
+    useEffect(() => {
+        get(setClubs);
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        post(clubs);
         const data = {
             name: clubName,
             description: clubDescription,
@@ -82,9 +89,9 @@ export const AddClub = () => {
 
             <table>
                 <tbody>
-                    {newClub.map((club) => {
+                    {clubs.map((club, index) => {
                         return (
-                            <tr key={club.index}>
+                            <tr key={index}>
                                 <th>{club.name}</th>
                                 <th>{club.description}</th>
                                 <th>{club.phone}</th>
