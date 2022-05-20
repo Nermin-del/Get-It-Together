@@ -1,8 +1,9 @@
 import React from 'react';
 import { TextField } from '../utils/TextField';
 import { InputField } from '../utils/InputField';
+import PropTypes from 'prop-types';
 
-export const ClubForm = (props) => {
+const ClubForm = (props) => {
     return (
     <form onSubmit={props.handleSubmit}>
         <h1>Lägg till klubb</h1>
@@ -24,3 +25,11 @@ export const ClubForm = (props) => {
     </form>
     )
 }
+
+ClubForm.propTypes = {
+    valueClub: PropTypes.string.isRequired,
+    valuePhone: PropTypes.number.isRequired,
+    valueDesc: PropTypes.string.isRequired,
+}
+
+export default ClubForm

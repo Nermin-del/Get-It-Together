@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { post } from '../server/post';
-import { ClubForm } from './ClubForm';
-import { ClubList } from './ClubList';
+import ClubForm from './ClubForm';
+import ClubList from './ClubList';
 import axios from 'axios';
 import './style/clubs.css';
 
 
-export const AddClub = () => {
+const AddClub = () => {
     
     const [clubName, setClubName] = useState('');
     const [clubDescription, setClubDescription] = useState('');
     // const [clubLocation, setClubLocation] = useState('');
-    const [clubPhone, setClubPhone] = useState('');
+    const [clubPhone, setClubPhone] = useState(0);
     const [newClub, setNewClub] = useState([])
     // const [clubEmail, setClubEmail] = useState('');
     // const [clubWebsite, setClubWebsite] = useState('');
@@ -62,6 +61,8 @@ export const AddClub = () => {
         setNewClub(result.data)
     }
 
+    
+
     const deleteNewClub = (e) => {
         e.preventDefault();
         const oneGoneArray = newClub.slice(0, length - 1);
@@ -80,3 +81,4 @@ export const AddClub = () => {
 }
 
 
+export default AddClub;

@@ -6,7 +6,7 @@
       "description": "Description 1",
       "image": "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjNy7WQ0K3hAhVFyosKHUqkA_EQjRx6BAgBEAU&url=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dclub%2B1%26rlz%3D1C1CHBD_en-US851US851&psig=AOvVaw2X_q-_X_q-_X_q-_X_q-&ust=1560795909838000",
       "location": "Location 1",
-      "phone": "1234567890",
+      "phone": 1234567890,
       "email": ""
     },
     {
@@ -15,15 +15,8 @@
       "description": "Description 2",
       "image": "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjNy7WQ0K3hAhVFyosKHUqkA_EQjRx6BAgBEAU&url=https%3A%2F%2Fwww.google.com%2Fsearch%3Fq%3Dclub%2B1%26rlz%3D1C1CHBD_en-US851US851&psig=AOvVaw2X_q-_X_q-_X_q-_X_q-&ust=1560795909838000",
       "location": "Location 1",
-      "phone": "1234567890",
+      "phone": 1234567890,
       "email": ""
-    },
-    {
-      "name": "text",
-      "description": "text",
-      "phone": "text",
-      "index": 2,
-      "id": 2
     }
   ]
 }

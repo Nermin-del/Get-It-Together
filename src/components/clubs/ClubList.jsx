@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-export const ClubList = (props) => {
+const ClubList = (props) => {
     return (
         <table>
             <tbody>
@@ -17,3 +18,9 @@ export const ClubList = (props) => {
         </table>
     )
 }
+
+ClubList.propTypes = {
+    clubs: PropTypes.array.isRequired
+}
+
+export default ClubList

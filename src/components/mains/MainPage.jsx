@@ -1,6 +1,6 @@
 import React from 'react';
 import { Nav } from './components/Nav';
-import { AddClub } from '../clubs/AddClub';
+import AddClub from '../clubs/AddClub';
 import { AddUser } from '../users/AddUser';
 import { Footer } from './components/Footer';
 import { HomePage } from './HomePage';

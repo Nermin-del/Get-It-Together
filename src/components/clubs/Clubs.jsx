@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ClubList } from './ClubList';
+import ClubList  from './ClubList';
 import { useEffect } from 'react';
 import axios from 'axios';
 
@@ -13,3 +13,4 @@ export const Clubs = () => {
     }, []);
     return <ClubList clubs={clubs} />
 }
+    
