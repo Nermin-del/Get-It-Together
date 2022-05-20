@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { post } from '../server/post';
 import { ClubForm } from './ClubForm';
+import { ClubList } from './ClubList';
+import axios from 'axios';
 import './style/clubs.css';
 
 
 export const AddClub = () => {
-
+    
     const [clubName, setClubName] = useState('');
     const [clubDescription, setClubDescription] = useState('');
     // const [clubLocation, setClubLocation] = useState('');
@@ -38,7 +41,12 @@ export const AddClub = () => {
         setClubDescription(e.target.value);
     }
 
-    const addNewClub = (e) => {
+    useEffect(async () => {
+        const result = await axios.get('http://localhost:3000/clubs');
+        setNewClub(result.data)
+    }, []);
+
+    const addNewClub = async (e) => {
         e.preventDefault();
         const data = {
             name: clubName,
@@ -46,8 +54,12 @@ export const AddClub = () => {
             phone: clubPhone,
             index: newClub.length
         }
-        localStorage.setItem(clubName + data.index, JSON.stringify(data));
-        setNewClub([...newClub, data])
+
+        axios.post("http://localhost:3000/clubs", data).catch((error => {
+            console.log('COULD NOT SAVE CLUBS :( ', error);
+        }))
+        const result = await axios.get('http://localhost:3000/clubs');
+        setNewClub(result.data)
     }
 
     const deleteNewClub = (e) => {
@@ -58,8 +70,11 @@ export const AddClub = () => {
 
     return (
         <div>
-         <ClubForm handleSubmit={handleSubmit} onHandleClub={onHandleClubName} valueClub={clubName} onHandlePhone={onHandleClubPhone} valuePhone={clubPhone}
-          onHandleDesc={onHandleClubDescription} valueDesc={clubDescription} addNewClub={addNewClub} deleteNewClub={deleteNewClub} />
+            <ClubList clubs={newClub}>
+
+            </ClubList>
+            <ClubForm handleSubmit={handleSubmit} onHandleClub={onHandleClubName} valueClub={clubName} onHandlePhone={onHandleClubPhone} valuePhone={clubPhone}
+                onHandleDesc={onHandleClubDescription} valueDesc={clubDescription} addNewClub={addNewClub} deleteNewClub={deleteNewClub} />
         </div>
     );
 }

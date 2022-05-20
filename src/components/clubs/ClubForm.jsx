@@ -7,15 +7,15 @@ export const ClubForm = (props) => {
     <form onSubmit={props.handleSubmit}>
         <h1>Lägg till klubb</h1>
         <div className='form-item'>
-            <TextField Children="clubnamn" />
+            <TextField children="clubnamn" />
             <InputField onHandle={props.onHandleClub} value={props.valueClub} />
         </div>
         <div className='form-item'>
-            <TextField Children="telefon" />
-            <InputField onHandle={props.onHandlePhone} value={props.valuePhone} />
+            <TextField children="telefon" />
+            <InputField onHandle={props.onHandlePhone} value={props.valuePhone} type="number" />
         </div>
         <div className='form-item'>
-            <TextField Children="beskrivning" />
+            <TextField children="beskrivning" />
             <InputField onHandle={props.onHandleDesc} value={props.valueDesc} />
         </div>
         <button onClick={props.addNewClub} type='submit'>Lägg till klubb</button>
