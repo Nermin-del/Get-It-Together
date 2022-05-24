@@ -1,9 +1,7 @@
 import axios from "axios"
+import { useEffect } from "react";
 
 export const get = async (setClubs) => {
-    await axios.get("http://localhost:5000/clubs")
-    .then(res => {
-        console.log(res.data)
-        setClubs(res.data)
-    })
+    const result = await axios.get('http://localhost:3000/clubs');
+    setClubs(result.data)
 }

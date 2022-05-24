@@ -1,9 +1,14 @@
 import React from 'react';
+import propTypes from 'prop-types';
 
 export const Button = props => {
     return (
-        //skapa så det läggs till något i consolen
-        // skapa en state
-        <button onClick={props.onHandleClick}>{props.children}</button>
+        
+        <button type={props.type} onClick={props.onHandleClick}>{props.children}</button>
+
     )
+}
+
+Button.propTypes = {
+    type: propTypes.string 
 }

@@ -1,6 +1,8 @@
 import axios from "axios";
 
-export const post = async (clubs) => {
+export const post = async (data) => {
 
-    await axios.post("http://localhost:5000/clubs", clubs)
+    axios.post("http://localhost:3000/clubs", data).catch((error => {
+        console.log('COULD NOT SAVE CLUBS :( ', error);
+    }))
 }

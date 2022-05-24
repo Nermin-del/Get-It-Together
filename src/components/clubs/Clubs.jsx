@@ -2,15 +2,12 @@ import React, { useEffect, useState } from 'react';
 import ClubList  from './ClubList';
 import { useEffect } from 'react';
 import axios from 'axios';
-
-
+import { get } from '../server/get';
 
 export const Clubs = () => {
     const [clubs, setClubs] = useState([]);
     useEffect(async () => {
-        const result = await axios.get('http://localhost:3000/clubs');
-        setClubs(result.data)
+        get(setClubs)
     }, []);
-    return <ClubList clubs={clubs} />
+    return <ClubList clubs={clubs} setClubs={setClubs} />
 }
-    

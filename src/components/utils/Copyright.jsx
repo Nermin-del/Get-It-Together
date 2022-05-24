@@ -1,6 +1,8 @@
 import React from 'react';
+import { DateGetYear } from './DateGetYear';
 
 export const Copyright = () => {
-    return <p>Get It Together &copy; {new Date().getFullYear().toString()}</p>
+    return <p>Get It Together &copy; <DateGetYear /></p>
 
 }
+

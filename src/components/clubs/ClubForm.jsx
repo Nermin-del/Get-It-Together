@@ -1,35 +1,36 @@
 import React from 'react';
+import { Button } from '../utils/Button';
 import { TextField } from '../utils/TextField';
 import { InputField } from '../utils/InputField';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 
 const ClubForm = (props) => {
     return (
     <form onSubmit={props.handleSubmit}>
         <h1>Lägg till klubb</h1>
         <div className='form-item'>
-            <TextField children="clubnamn" />
-            <InputField onHandle={props.onHandleClub} value={props.valueClub} />
+            <TextField text="Klubbnamn" />
+            <InputField type="text" onHandle={props.onHandleClub} value={props.valueClub} />
         </div>
         <div className='form-item'>
-            <TextField children="telefon" />
-            <InputField onHandle={props.onHandlePhone} value={props.valuePhone} type="number" />
+            <TextField text="Telefon" />
+            <InputField type="number" onHandle={props.onHandlePhone} value={props.valuePhone} />
         </div>
         <div className='form-item'>
-            <TextField children="beskrivning" />
-            <InputField onHandle={props.onHandleDesc} value={props.valueDesc} />
+            <TextField text="Beskrivning" />
+            <InputField type="text" onHandle={props.onHandleDesc} value={props.valueDesc} />
         </div>
-        <button onClick={props.addNewClub} type='submit'>Lägg till klubb</button>
+        <Button onClick={props.addNewClub} type='submit'>Lägg till klubb</Button>
 
-        <button onClick={props.deleteNewClub} type='submit'>Ta bort senaste klubben</button>
+        <Button onClick={props.deleteNewClub} type='submit'>Ta bort senaste klubben</Button>
     </form>
     )
 }
 
 ClubForm.propTypes = {
-    valueClub: PropTypes.string.isRequired,
-    valuePhone: PropTypes.number.isRequired,
-    valueDesc: PropTypes.string.isRequired,
+    valueClub: propTypes.string,
+    // valuePhone: propTypes.number,
+    valueDesc: propTypes.string,
 }
 
 export default ClubForm

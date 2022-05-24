@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { post } from '../server/post';
+import { get } from '../server/get';
 import ClubForm from './ClubForm';
 import ClubList from './ClubList';
 import axios from 'axios';
 import './style/clubs.css';
+import { useHistory } from "react-router-dom";
 
 
 const AddClub = () => {
-    
+    navigate = useHistory();
+    // error boundary test
+
+    // var r = Math.random();
+    // if (r < 0.2) {
+    //     throw new Error('Something went wrong');
+    // }
+
     const [clubName, setClubName] = useState('');
     const [clubDescription, setClubDescription] = useState('');
     // const [clubLocation, setClubLocation] = useState('');
@@ -17,16 +26,6 @@ const AddClub = () => {
     // const [clubWebsite, setClubWebsite] = useState('');
     // const [clubImage, setClubImage] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        post(clubs);
-        const data = {
-            name: clubName,
-            description: clubDescription,
-            phone: clubPhone,
-        }
-        console.log(data);
-    }
 
     const onHandleClubName = (e) => {
         setClubName(e.target.value);
@@ -54,14 +53,12 @@ const AddClub = () => {
             index: newClub.length
         }
 
-        axios.post("http://localhost:3000/clubs", data).catch((error => {
-            console.log('COULD NOT SAVE CLUBS :( ', error);
-        }))
-        const result = await axios.get('http://localhost:3000/clubs');
-        setNewClub(result.data)
+        post(data)
+        get(setNewClub)
+        navigate.push("/clubs")
+        // const result = await axios.get('http://localhost:3000/clubs');
+        // setNewClub(result.data)
     }
-
-    
 
     const deleteNewClub = (e) => {
         e.preventDefault();
@@ -71,10 +68,10 @@ const AddClub = () => {
 
     return (
         <div>
-            <ClubList clubs={newClub}>
-
-            </ClubList>
-            <ClubForm handleSubmit={handleSubmit} onHandleClub={onHandleClubName} valueClub={clubName} onHandlePhone={onHandleClubPhone} valuePhone={clubPhone}
+            
+            {/* <p>{r}</p> */}
+            {/* <ClubList clubs={newClub} /> */}
+            <ClubForm handleSubmit={addNewClub} onHandleClub={onHandleClubName} valueClub={clubName} onHandlePhone={onHandleClubPhone} valuePhone={clubPhone}
                 onHandleDesc={onHandleClubDescription} valueDesc={clubDescription} addNewClub={addNewClub} deleteNewClub={deleteNewClub} />
         </div>
     );
