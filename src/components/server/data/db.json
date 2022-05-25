@@ -1,3 +1,18 @@
 {
-  "clubs": []
+  "clubs": [
+    {
+      "name": "anka",
+      "description": "pelle",
+      "phone": 0,
+      "index": 5,
+      "id": 14
+    },
+    {
+      "name": "12323",
+      "description": "312313",
+      "phone": "4",
+      "index": 2,
+      "id": 16
+    }
+  ]
 }

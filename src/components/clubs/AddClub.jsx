@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { post } from '../server/post';
 import { get } from '../server/get';
 import ClubForm from './ClubForm';
-import ClubList from './ClubList';
-import axios from 'axios';
 import './style/clubs.css';
 import { useHistory } from "react-router-dom";
-
+import { clubCounterAdd, clubCounterSet, clubCounterSubtract } from './actions/ClubActions';
 
 const AddClub = () => {
     navigate = useHistory();
+    const activeClubs = useSelector(state => state?.counter);
     // error boundary test
 
     // var r = Math.random();
@@ -25,7 +25,7 @@ const AddClub = () => {
     // const [clubEmail, setClubEmail] = useState('');
     // const [clubWebsite, setClubWebsite] = useState('');
     // const [clubImage, setClubImage] = useState('');
-
+    const dispatch = useDispatch();
 
     const onHandleClubName = (e) => {
         setClubName(e.target.value);
@@ -39,9 +39,15 @@ const AddClub = () => {
         setClubDescription(e.target.value);
     }
 
-    useEffect(async () => {
-        const result = await axios.get('http://localhost:3000/clubs');
-        setNewClub(result.data)
+    useEffect(() => {
+        let isMounted = true;
+        get().then((clubs) => {
+            if (isMounted) {
+                setNewClub(clubs);
+                dispatch(clubCounterSet(clubs.length));
+            }
+        }).catch(err => console.log(err));
+        return () => { isMounted = false }
     }, []);
 
     const addNewClub = async (e) => {
@@ -54,7 +60,8 @@ const AddClub = () => {
         }
 
         post(data)
-        get(setNewClub)
+        setNewClub(await get());
+        dispatch(clubCounterAdd(activeClubs))
         navigate.push("/clubs")
         // const result = await axios.get('http://localhost:3000/clubs');
         // setNewClub(result.data)
@@ -64,11 +71,12 @@ const AddClub = () => {
         e.preventDefault();
         const oneGoneArray = newClub.slice(0, length - 1);
         setNewClub(oneGoneArray)
+        dispatch(clubCounterSubtract(activeClubs))
     }
 
     return (
         <div>
-            
+            <h1>Aktiva klubbar: {activeClubs}</h1>
             {/* <p>{r}</p> */}
             {/* <ClubList clubs={newClub} /> */}
             <ClubForm handleSubmit={addNewClub} onHandleClub={onHandleClubName} valueClub={clubName} onHandlePhone={onHandleClubPhone} valuePhone={clubPhone}
