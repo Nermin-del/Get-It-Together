@@ -13,6 +13,7 @@ Jag använde mig utav webpack innan jag valde parcel men det strulade så jag by
 ### React-DOM ###
 ### Json-server ###
 ### Axios ###
+### React-Redux ###
 ### Redux ###
 ### prop-Type ###
 ### Material-UI core ###
