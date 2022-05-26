@@ -29,7 +29,6 @@ const ClubForm = (props) => {
 
 ClubForm.propTypes = {
     valueClub: propTypes.string,
-    // valuePhone: propTypes.number,
     valueDesc: propTypes.string,
 }
 

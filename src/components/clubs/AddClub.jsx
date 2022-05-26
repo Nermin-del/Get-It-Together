@@ -63,8 +63,6 @@ const AddClub = () => {
         setNewClub(await get());
         dispatch(clubCounterAdd(activeClubs))
         navigate.push("/clubs")
-        // const result = await axios.get('http://localhost:3000/clubs');
-        // setNewClub(result.data)
     }
 
     const deleteNewClub = (e) => {
@@ -77,8 +75,8 @@ const AddClub = () => {
     return (
         <div>
             <h1>Aktiva klubbar: {activeClubs}</h1>
+            {/* error boundary  test*/}
             {/* <p>{r}</p> */}
-            {/* <ClubList clubs={newClub} /> */}
             <ClubForm handleSubmit={addNewClub} onHandleClub={onHandleClubName} valueClub={clubName} onHandlePhone={onHandleClubPhone} valuePhone={clubPhone}
                 onHandleDesc={onHandleClubDescription} valueDesc={clubDescription} addNewClub={addNewClub} deleteNewClub={deleteNewClub} />
         </div>
